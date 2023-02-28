@@ -6,6 +6,11 @@ import PetsList from "./components/PetsList";
 function App() {
   const [patients, setPatients] = useState([]);
   const [patient, setPatient] = useState({});
+  
+  const deletePatient = (id) => {
+    const updatedPatients = patients.filter (pat => pat.id !== id);
+    setPatients(updatedPatients)
+  }
 
   return (
     <div className="container mx-auto mt-20">
@@ -15,10 +20,12 @@ function App() {
             patients={patients} 
             setPatients={setPatients} 
             patient = {patient}
+            setPatient={setPatient}
             />
         <PetsList 
             patients={patients} 
             setPatient={setPatient}
+            deletePatient={deletePatient}
             />
       </div>
     </div>
